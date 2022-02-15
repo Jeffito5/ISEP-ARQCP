@@ -1,0 +1,17 @@
+Grupo V
+
+int fun(int x, int y, int z){
+	int i, result = ____(1)_____;
+	for(i=_(2)___; _(3)___; _(4)___){
+		result = __(5)_____;
+	}
+ return ___(6)____;
+}
+
+Respostas:
+1. y
+2. x
+3. i>=z
+4. i--
+5. result+i
+6. result

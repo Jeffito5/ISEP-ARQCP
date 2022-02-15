@@ -1,0 +1,23 @@
+Grupo IV
+
+a)
+|Valor  | 0x100 | 0x101 | 0x102 | 0x103 |
+|“ABC”  |  'A'  |  'B'  |   'C' |'\0' 	|
+|0xABCD |	CD	|   AB  |       |		|
+
+b) Endereço Valor 				Registo Valor
+	0x100 	0xFF 				%eax 	0x100
+	0x104 	0xAB 				%ecx 	0x1
+	0x108 	0x13 				%edx 	0x3
+	0x10C 	0x11 				%ebx 	0x4
+	
+Respostas:
+A. 0xFF
+B. 0x11
+C. 0x104
+D. 0x108
+
+c) movl %ecx, %ebx      |	movl $8, %ebx
+   imull $8, %ebx       | 	imull %ecx, %ebx
+   addl %eax, %ebx      |	addl $4, %ebx
+   addl $4, %ebx        |	addl %eax, %ebx

@@ -1,0 +1,18 @@
+Grupo IV
+
+void handle_strs(char *strs[20], int *res){
+	int i, j, length,tmp, local_res;
+	local_res = 0; 												/* accumulate results in local variable */
+	for(i = 0; i < 20; i++){
+		length = strlen(strs[i]); 								/* code motion and strength reduction*/
+		if(length < (i<<3 + i<<1)){
+			*res += length;
+		}else{	
+			tmp = i<<4;
+			for(j=0; j < length; ++j){
+				local_res += tmp + strs[i][j]; 					/* removing unnecessary procedure calls */
+			}
+		}
+	}	
+	*res = local_res; 											/* Eliminating unneeded memory references */
+}

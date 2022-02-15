@@ -1,0 +1,28 @@
+Grupo II
+
+void product(num_t *dest, unsigned int x, num_t y){
+ *dest = x * y;
+}
+
+movl 12(%ebp), %eax				
+movl 20(%ebp), %ecx				
+imull %eax, %ecx				
+mull 16(%ebp)					
+leal (%ecx, %edx), %edx			
+movl 8(%ebp), %ecx				
+movl %eax, (%ecx)
+movl %edx, 4(%ecx)
+
+a) O tipo da estrutura é unsigned long long int pois está a trabalhar com 
+valores de 64 bits. É unsigned pois na quarta linha verifica-se o uso do 
+mull, instrução de multiplicação usada para valores sem sinal
+
+b)Sendo y um valor de 64 bits, é possível dizer que y = yh * 232 + yl, 
+onde yh representa os 32 bits mais significativos de y e yl os seus
+32 bits menos significativos.
+
+Assim, é possível determinar a multiplicação de um valor de 32 bits x por 
+um valor de 64 bits y como x * y = x * yh * 232 + x * yl. Na linha 3 é 
+calculada a primeira parcela da soma, na linha 4 a segunda parcela, sendo 
+a soma calculada na linha 5. A representação correta do resultado necessitaria,
+ no pior caso, de 96 bits, mas o resultado é truncado para 64 bits (o par de registos EDX:EAX).

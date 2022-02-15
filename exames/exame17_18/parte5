@@ -1,0 +1,19 @@
+Grupo V
+
+int** matrix(data_t *matrix){									/* obter endereço da matriz dentro da estrutura para diminuir invocação de funções */
+ return matrix->m;
+}
+
+void calc_matrix(data_t *matrix, int *res){
+	int i, j, numLinhas, numColunas, tamanho, **data, counter=0; /* criar todas as variáveis fora dos ciclos para não as ter de criar n vezes
+	numLinhas = num_lines(matrix); 								 /* chamar esta função apenas uma vez */
+	numColunas = num_columns(matrix);							 /* chamar esta função apenas uma vez */
+	data = get_data(matrix) 
+	tamanho = i << 4; 											 /* fazer este cálculo apenas uma vez fora do ciclo */
+	for(i = 0; i< numLinhas; i++){ 								 /* percorrer matrix por linha, tirando partido da cache */
+		for(j= 0; j < numColunas; j++){
+			*res += tamanho + data[i][j];
+		}
+	}
+	*res = counter; 											 /* apenas uma escrita na memória com o uso do counter */
+}

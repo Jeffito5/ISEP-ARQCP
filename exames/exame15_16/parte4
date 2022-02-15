@@ -1,0 +1,11 @@
+Grupo IV
+
+void fix_set_diag(int m[N][N], int val){
+	int i;
+	int *ptr = &m[0][0];
+	i = 0;
+	do{
+		*(ptr+i) = val;
+		i += (N+1);
+	}while(i != (N+1)*N);
+}

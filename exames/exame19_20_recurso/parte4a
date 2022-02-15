@@ -1,0 +1,13 @@
+Grupo IV
+
+Endereço Conteúdo 			Registo Conteúdo
+0x8000 		0x5 			%edx 	0x8000
+0x8004 		0xA 			%ebx 	2
+0x8008 		0xF
+
+leal (%edx), %eax				eax=&(0x8000)=0x8000
+movl (%edx), %eax				eax=0x5
+leal 4(%edx), %eax				eax=&(0x8000+4)=0x8004
+movl 4(%edx), %eax				eax=0x8000+4=0xA
+leal (%edx, %ebx, 4), %eax		eax=&(0x8000+4*2)=0x8008
+movl (%edx, %ebx, 4), %eax		eax=0xF

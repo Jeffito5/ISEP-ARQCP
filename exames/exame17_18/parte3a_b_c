@@ -1,0 +1,58 @@
+Grupo III
+
+a)  a-0x100- 6 bytes
+	b-0x106- 1 byte
+	espaço-0x107	1 bytes
+	c-0x108	 8 bytes
+	d-0x110	 4 bytes
+	ub-0x114 4 bytes
+	e-0x118  1 byte
+	espaço-0x119   3 bytes
+	total-28 bytes
+	
+b) É possível	
+
+	typedef struct {
+		long long int c; 0x100: 8 bytes
+		int d; 0x108: 4 bytes
+		unionB ub; 0x10C: 4 bytes
+		short int a[3]; 0x110: 6 bytes
+		char b; 0x116: 1 byte
+		char e; 0x117: 1 byte
+	}structA;
+	
+	c-0x100- 8 bytes
+	d-0x108- 4 bytes
+	ub-0x10C- 4 bytes
+	a-0x110- 6 bytes
+	b-0x116- 1 byte
+	e-0x117- 1 byte
+	total-24 bytes
+
+c)	return matrix[i][j].ub.b;
+
+	.section .data
+
+	.global return_unionB_b				# declarar char return_unionB_b(structA **matrix, int i, int j) como global
+	
+.section .text
+	
+return_unionB_b:
+		# prologue
+		pushl %ebp          			# save previous stack frame pointer
+		movl %esp, %ebp     			# the stack frame pointer for our function
+		
+		movl 8(%ebp), %edx				# mover a matriz para edx
+		movl 12(%ebp), %ecx				# mover o i para ecx
+		movl (%edx, %ecx, 4), %edx		# matriz[i]
+		movl 16(%ebp), %ecx 			# mover o j para ecx
+		imull $28, %ecx 				# j*tamanho da estrutura
+		addl %ecx, %edx 				# %edx = matrix[i][j]
+		addl $20, %edx 					# 20 bytes necessários para avançar até ub 
+		movb (%edx), %al 				# %al = ub.b
+		
+		#epilogue
+        movl %ebp, %esp         		# restore the previous stack pointer ("clear" the stack)
+        popl %ebp               		# restore the previous stack frame pointer
+        ret
+		

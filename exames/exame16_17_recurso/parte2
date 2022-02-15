@@ -1,0 +1,19 @@
+Grupo II
+
+int optarith(int x, int y) {
+	int t = x;
+	x <<= 5;	/* x=32	*/
+	x -= t;		/* x=32-t (=) x=32-x (=) M=x(<<5 -1) (=) M=32-1=31
+	if (y < 0){ 
+		y += 7;	/* y=y+7 */
+		y >>= 3;/* y/8	*/
+	}	
+ return x+y;
+}
+
+A primeira metade da função mostra-nos que M = 31; x*M é calculado como (x<<5) – x.
+
+A segunda metade mostra-nos que N = 8; y/N é calculado como y>>3. Como y 
+pode ser negativo (é um int), a divisão através de deslocamentos para a direita 
+exige que se altere, nesses casos, o dividendo para x + (1<<k) - 1 de modo a que o
+arredondamento seja corretamente efetuado na direção do zero e não de menos infinito. 

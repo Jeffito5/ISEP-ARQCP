@@ -1,0 +1,9 @@
+Grupo II
+
+Expressão 							|	Sempre verdade?
+x*x >= 0							|	Não	
+x+y == uy+ux						|	Sim
+x == (int)(float)x					|	Não
+(double)(float)x == (double)ux		|	Não
+dx + dy == (double)(y+x)			|	Sim
+(dx + dy) - dx == dy				|	Não

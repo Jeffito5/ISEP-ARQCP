@@ -1,0 +1,39 @@
+Grupo III
+
+a)  c-0x100- 1 byte
+	espaço-0x101- 3 bytes
+	p-0x104- 4 bytes
+	i-0x108- 4 bytes
+	d-0x11C- 8 bytes
+	s-0x114- 2 bytes
+	espaço-0x116- 2 bytes
+	total-24 bytes
+	
+b)  É possível	
+	
+	d-0x100- 8 bytes
+	p-0x108- 4 bytes
+	i-0x10C- 4 bytes
+	s-0x110- 2 bytes
+	c-0x112- 1 byte
+	espaço-0x113- 1 byte
+	total-20 bytes
+	
+c)	f1:							|	_(1)__ f1(struct2 *s2){
+	 pushl %ebp					|		return ______(2)___________;
+	 movl %esp, %ebp			|	}
+	 movl 8(%ebp),%eax			|
+	 movl 16(%eax), %eax		|	Respostas:
+	 movl %ebp, %esp			|	1.int
+	 popl %ebp					|	2.s2->v[1]
+	 ret						|
+	 
+	 f2:						|	_(1)__ f2(struct2 *s2){
+	 pushl %ebp					|		return ____(2)_____________;
+	 movl %esp, %ebp			|	}
+	 movl 8(%ebp),%eax			|
+	 movl 4(%eax), %eax			|	Respostas:
+	 movl 8(%eax),%eax			|	1.int
+	 movl %ebp, %esp			|	2.s2->s1->i
+	 popl %ebp					|
+	 ret						|	

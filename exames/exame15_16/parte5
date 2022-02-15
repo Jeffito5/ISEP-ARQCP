@@ -1,0 +1,18 @@
+Grupo V
+
+int loop(int x, int y){
+	int result;
+	for(__(1)_____; _(2)______; result++){
+		____(3)_______;
+		____(4)_______;
+	}
+	___(5)_______;
+	return result;
+}
+
+Respostas:
+1.result=0
+2.x>y
+3.x--
+4.y++
+5.result++

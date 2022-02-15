@@ -1,0 +1,9 @@
+Grupo II
+
+a) Quando t for maior que s a função irá produzir um resultado incorreto
+pois é suposto este ser um valor negativo. Assim, e devido ao valor de 
+retorno ser um unsigned int, o resultado irá dar um valor positivo grande.
+
+b)int strlonger(char *s, char *t){
+	return strlen(s)>strlen(t);
+}

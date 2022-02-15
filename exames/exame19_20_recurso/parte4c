@@ -1,0 +1,36 @@
+Grupo IV
+
+func2:
+	 pushl %ebp
+	 movl %esp, %ebp
+	 
+	 movl 8(%ebp), %eax
+	 testl %eax, %eax
+	 je .L5
+	 xorl %edx, %edx
+	 testl %eax, %eax
+	 js .L3
+.L4:
+	 addl $1, %edx
+	 shll %eax
+	 jns .L4
+.L3:
+	 movl 12(%ebp), %ecx
+	 movl %edx, (%ecx)
+	 jmp .L2
+.L5:
+	 movl $32, %eax
+.L2:
+	 movl %ebp, %esp
+	 popl %ebp
+	 ret 
+	 
+Respostas:
+1. 0
+2. x==0
+3. 32
+4. x>=0
+5. n++
+6. x = x<<1
+7. *p = n
+8. x

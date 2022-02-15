@@ -1,0 +1,33 @@
+Grupo IV
+
+void calcHash(char *str, int *hash){
+	int i, j;
+	*hash = 0;
+	for(i = 0; i < strlen(str); i++){
+	j = strlen(str) / 2;
+		*hash += secret(str,i) * 32 + j);
+	}
+}
+
+---------- Minha Versão ----------
+void calcHash(char *str, int *hash){
+	int i, j;
+	*hash = 0;
+	int length=strlen(str);
+	j=length>>1;
+	for(i = 0; i < length; i++){
+		*hash += secret(str,i)<<5+j;
+	}
+}
+
+---------- Versão corrigida ----------
+void calcHash(char *str, int *hash){
+	int i, j, length, tmp;
+	tmp = 0;								/* accumulate results in local variable */
+	length = strlen(str);					/* code motion and strength reduction*/
+	j = length >> 1;
+	for(i = 0; i < length; i++){
+		tmp += ((str[i] % 26) << 5) + j;	/* removing unnecessary procedure calls */
+	}
+	*hash = tmp;							/* Eliminating unneeded memory references */
+}

@@ -1,0 +1,11 @@
+Grupo V
+
+a) A eliminação do overhead inerente às sucessivas invocações da função (e consequente retorno) 
+na versão recursiva justifica o aumento de performance verificado. O valor de 4 
+CPE justifica-se pela latência da operação de multiplicação, impondo um limite da performance desta
+versão. 
+
+b) A alteração quebrou a interdependência da operação de multiplicação entre 
+os dois valores processados em cada iteração do ciclo. Na nova versão, a multiplicação 
+i*(i-1) pode ocorrer em simultâneo com a multiplicação pelo valor da variável result 
+determinado na iteração anterior.

@@ -1,0 +1,20 @@
+Grupo V
+
+int fun(int n, int *a){
+	int i;
+	int x = ____1_____;
+	for(i=__2_; _3___; i++){
+		if(___4________)
+		x = ___5____;
+		__6_____;
+	}
+	return x;
+} 
+
+Respostas:
+1.0
+2.0
+3.i<n
+4.x<a[i]
+5.a[i]
+6.x++

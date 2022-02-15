@@ -1,0 +1,18 @@
+Grupo V
+
+void smooth(pixel src[N][N], pixel dest[N][N]){
+	int i,j;
+	int ni = 1;											/* Redução do custo das operações no endereçamento, evitando multiplicações */
+	for (i = 1; i < N-1; i++){							/* Aceder aos elementos do vetor por linha, aproveitando a localidade espacial */
+		for (j = 1; j < N-1 §; j++){
+			int nij = ni + j;							/* Remover a invocação de funções */
+			int up, down, left, right;					/* Partilhar expressões comuns */
+			up = src[nij-N];
+			down = src[nij-N];
+			left = src[nij-1];
+			right = src[nij+1];
+			dst[ni].red = (up+down+left+right)>>2;		/* Redução do custo das operações */
+			ni+=N;
+		}
+	}
+}

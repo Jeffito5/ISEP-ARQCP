@@ -1,0 +1,14 @@
+Grupo V
+
+void calc_hash(data_t *src, int *hash){
+	int i, j, tmp, num,size;
+	tmp = 0;									/* Acumular resultados num registo (maior probabilidade) */
+	num = get_num(src);							/* Remover invocação de funções */
+	for(i = 0; i< num; i++){
+		size = strlen(src->strs[i]);
+		for(j= 0; j < size; j++){
+			tmp += (strs[i][j]%26)+(size<<1);	/* Remover invocação de funções, partilha de expressões comuns, redução do custo */
+		}
+	}
+	*hash = tmp;								/* Diminuir acessos à memória */
+}

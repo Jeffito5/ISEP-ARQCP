@@ -1,0 +1,43 @@
+Grupo IV
+
+func:
+		pushl %ebp
+		movl %esp,%ebp
+		movl 8(%ebp), %eax
+		movl 12(%ebp), %ecx
+		movl 16(%ebp), %edx
+		cmpl %ecx, %edx
+		jle .L2
+		movl 8(%eax), %eax
+.L1:
+		shrw $2, 4(%eax)
+		incl %ecx
+		cmpl %ecx, %edx
+		jg .L1
+.L2:
+		movl %esp, %ebp
+		popl %ebp
+		ret
+		
+typedef struct node{
+ int x;
+ __(1)____ y;
+ struct node *next;
+ struct node *prev;
+}node_t;
+
+void func(__(2)____, int a, int b){
+ node_t *m;
+ m = ______(3)_____;
+ while(___(4)____){
+ m->y = ___(5)______;
+ a++;
+ }
+}
+
+Respostas:
+1-short
+2-node_t *next1
+3-next1->next
+4-a<b
+5-m->y/4

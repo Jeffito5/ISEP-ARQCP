@@ -1,0 +1,25 @@
+Grupo IV
+
+.section .data
+
+	.global return_s1_b2				# declarar short return_s1_b2(struct s2 **matrix, int i, int j) como global
+	
+.section .text
+	
+return_s1_b2:
+		# prologue
+		pushl %ebp          			# save previous stack frame pointer
+		movl %esp, %ebp     			# the stack frame pointer for our function
+		
+		movl 8(%ebp), %edx				# mover a matriz para edx
+		movl 12(%ebp), %ecx				# mover o i para ecx
+		movl (%edx, %ecx, 4), %edx		# matriz[i]
+		imull $20, %ecx 				# j*tamanho da estrutura
+		movl 16(%edx,%ecx), %edx 		# matrix[i][j]->h
+		movl (%edx), %edx 				# matrix[i][j]->h->i
+		movw 8(%edx), %ax 				# matrix[i][j]->h->i->b[2]
+		
+		#epilogue
+        movl %ebp, %esp         		# restore the previous stack pointer ("clear" the stack)
+        popl %ebp               		# restore the previous stack frame pointer
+        ret

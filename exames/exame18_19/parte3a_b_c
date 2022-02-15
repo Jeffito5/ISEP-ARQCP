@@ -1,0 +1,43 @@
+Grupo III
+
+a)  d-0x100- 12 bytes
+	e-0x10C- 4 bytes
+	f-0x110	 4 bytes
+	g-0x114	 8 bytes
+	h-0x11C	 6 bytes
+	espaço-0x122   2 bytes
+	total-36 bytes
+	
+b	Independentemente da ordenação a estrutura irá ter sempre 12 bytes
+	porque tem que respeitar o alinhamento sendo este múltiplo do maior 
+	elemento que é K=4 bytes. 
+	
+c)
+	.section .data
+
+		.global return_u1_i				# declarar int return_u1_i(struct s2 matrix[10][20], int i, int j) como global
+	
+	.section .text
+	
+	return_u1_i:
+			# prologue
+			pushl %ebp          			# save previous stack frame pointer
+			movl %esp, %ebp     			# the stack frame pointer for our function
+			
+			movl 8(%ebp), %eax				# matriz vai para eax
+			movl 12(%ebp), %ecx				# i vai para ecx
+			imull $720, %ecx 				# i * 20 * sizeof(struct s2)
+			addl %ecx, %eax 				# matrix[i]
+			movl 16(%ebp), %edx				# j vai para edx
+			imull $36, %edx 				# j * sizeof(struct s2)
+			addl %edx, %eax 				# &matrix[i][j]
+			movl 12(%eax), %eax				# matrix[i][j].e preciso de avançar 12 bytes para chegar ao e
+			movl 4(%eax), %eax 				# &matrix[i][j].e->b preciso de avançar mais 4 bytes para chegar ao b
+			movl (%eax), %eax 				# matrix[i][j].e->b->i não necessito de avançar bytes pois o i é o primeiro elemento da union
+			
+			#epilogue
+			movl %ebp, %esp         		# restore the previous stack pointer ("clear" the stack)
+			popl %ebp               		# restore the previous stack frame pointer
+			ret
+
+

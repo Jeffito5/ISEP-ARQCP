@@ -1,0 +1,15 @@
+Grupo II
+
+a) A função não faz extensão de sinal. Por exemplo, se tentarmos extrair 
+o byte zero do valor 0xFF obtemos o valor 255 e não -1.
+
+b)Primeiro, aplica-se um deslocamento para a esquerda de forma a colocar 
+o bit mais significativo do byte que pretendemos extrair na posição
+31. Depois, aplica-se um deslocamento para a direita de 24 bits, 
+movendo o byte a extrair para a posição adequada (byte menos significativo),
+aplicando ao mesmo tempo a necessária extensão de sinal.
+
+int xbyte(packed_t word, char byte_num){
+	int left = word << ((3-byte_num) << 3);
+	return left >> 24;
+}

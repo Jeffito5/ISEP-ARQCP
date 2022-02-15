@@ -1,0 +1,60 @@
+Grupo III
+
+a)  a-0x100- 1 byte
+	b-0x101- 2 bytes
+	espaço-0x103	1 byte
+	c-0x104	 4 bytes
+	d-0x108	 2 bytes
+	espaço-0x10A	2 bytes
+	e-0x10C 4 bytes
+	f-0x110  1 byte
+	espaço-0x111   3 bytes
+	total-20 bytes
+	
+b)	unionC u;						|
+	u.a = 0x01020304;				|	1.printf(“%d\n”,sizeof(u));
+	u.b = 0x05060708;				|	2.printf(“%X\n”,u.c[0]);
+	u.d[4] = 0x0A; u.d[5] = 0x0B;	|	3.printf(“%X\n”,u.c[1]);
+	u.d[6] = 0x0C; u.d[7] = 0x0D;	|
+
+Respostas:
+1. 8. Tamanho da union é o valor do seu maior elemento: c ou d
+2. 4. u.b e u.c[0] são duas referências para os mesmos 4 bytes (os menos significativos da union)
+3. 4. u.c[1] e u.d[4] a u.d[7] são referências para os mesmos 4 bytes 
+(os mais significativos da union). Como a arquitectura IA32 é little endian, 
+ao serem interpretados como um único valor inteiro pela função printf, 
+o byte menos significativo desse inteiro é o byte com o endereço menor. 
+Logo, o inteiro resultante tem os bytes pela ordem indicada
+
+c) structA matrix[4][5];
+   void fill_structA_b(int i, int j){
+		matrix[i][j].b[0] = matrix[i][j].a;
+		matrix[i][j].b[1] = matrix[i][j].f;
+} 
+
+.section .data
+
+	.global fill_structA_b				# declarar void fill_structA_b(int i, int j) como global
+	
+.section .text
+	
+fill_structA_b:
+		# prologue
+		pushl %ebp          			# save previous stack frame pointer
+		movl %esp, %ebp     			# the stack frame pointer for our function
+		
+		movl 8(%ebp), %eax 				# mover o i para eax
+		imull $5,%eax 					# número de elementos por linha
+		imull $20, %eax 				# tamanho da estrutura
+		movl 12(%ebp), %edx 			# mover o j para edx
+		imull $20, %edx 				# tamanho da estrutura
+		leal matrix(%eax,%edx), %eax 	# eax=&matrix[i][j]
+		movb (%eax),%cl 				# cl=matrix[i][j].a
+		movb %cl,1(%eax) 				# matrix[i][j].b[0]=cl
+		movb 16(%eax), %cl 				# cl=matrix[i][j].f
+		movb %cl, 2(%eax) 				# matrix[i][j].b[1]=cl
+		
+		#epilogue
+        movl %ebp, %esp         		# restore the previous stack pointer ("clear" the stack)
+        popl %ebp               		# restore the previous stack frame pointer
+        ret

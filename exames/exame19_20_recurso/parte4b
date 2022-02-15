@@ -1,0 +1,30 @@
+Grupo IV
+
+.section .data
+
+	.global func1						# declarar void func1(int a, int b, int c) como global
+	
+.section .text
+	
+func1:
+		# prologue
+		pushl %ebp          			# save previous stack frame pointer
+		movl %esp, %ebp     			# the stack frame pointer for our function
+		
+		pushl %eax						# guardo o valor inicial de eax na stack
+		pushl %edx						# guardo o valor inicial de eax na stack
+		movl 8(%ebp), %ecx				# coloco o a em ecx
+		leal 12(%ebp), %eax				# coloco o endereço de b em ebx
+		movl 16(%ebp), %edx				# coloco o c em edx
+		addl %ecx, %edx					# faço a+c
+		pushl %edx						# coloco a soma como parâmetro
+		pushl %eax						# coloco o endereço do b como parâmetro
+		call xpto						# chamo a função
+		addl $8, %esp					# restauro a stack
+		popl %eax						# restauro o eax
+		popl %edx						# restauro o edx
+
+		#epilogue
+        movl %ebp, %esp         		# restore the previous stack pointer ("clear" the stack)
+        popl %ebp               		# restore the previous stack frame pointer
+        ret

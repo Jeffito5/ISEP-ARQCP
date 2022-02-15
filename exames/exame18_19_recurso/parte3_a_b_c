@@ -1,0 +1,20 @@
+Grupo III
+
+a)  a-0x100- 4 bytes
+	b-0x104- 20 bytes
+	c-0x118	 4 bytes
+	d-0x11C	 1 bytes
+	espaço- 0x11D 3 bytes
+	total-32 bytes
+	
+b	Independentemente da ordenação a estrutura irá ter sempre 20 bytes
+	porque tem que respeitar o alinhamento sendo este múltiplo do maior 
+	elemento que é K=4 bytes. 
+	
+c)	Respostas:
+	p->b.e.h
+	&(p->b.d)
+	p->b->f
+	
+
+

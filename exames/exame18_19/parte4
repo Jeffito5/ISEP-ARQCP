@@ -1,0 +1,15 @@
+Grupo IV
+
+proc1:
+Respostas:
+x->b->j.h[2]
+
+proc2:
+Respostas:
+movl 8(%ebp),%eax
+movl 12(%eax),%eax
+movl 8(%eax),%eax
+
+proc3:
+Respostas:
+x->k->c

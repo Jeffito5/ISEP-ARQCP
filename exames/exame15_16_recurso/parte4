@@ -1,0 +1,14 @@
+Grupo IV
+
+void sum_elements(int *v, int *sum){
+	int i, val;
+	int length = vec_length(v); 		/* code motion: remover procedure calls */
+	int count = 0; 						/* counter para acumular um resultado temporariamente
+										e evitar excessivas referêcias à memória:
+										localidade temporal */
+	for(i = 0; i < length; i++){
+		val = v[i]; 						/* evitar as chamadas sucessivas de funções */
+		count += val;
+	}
+	*sum = count;
+}

@@ -1,0 +1,14 @@
+Grupo V
+
+void count_positives_celsius(List *p, int *k){
+	int acc = 0;						// Acumular resultados num registo (maior probabilidade)
+	int temp;							// Eliminar invocação de funções
+	while(p!=NULL){
+		temp = p->data-32; 				// Reutilização de expressões
+		if ( ((tmp<<2)+tmp)>>3 > 0 ){	// Reduzir custo das operações
+			acc++;
+			p = p->next;
+		}
+	}
+	*k = acc;// Apenas uma escrita na memória
+}

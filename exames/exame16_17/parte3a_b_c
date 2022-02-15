@@ -1,0 +1,54 @@
+Grupo III
+
+a)  a-0x100- 3 bytes
+	espaço-0x103	1 byte
+	b-0x104- 2 bytes
+	espaço-0x106	2 bytes
+	c-0x108	 8 bytes
+	d-0x110	 4 bytes
+	*ptrB-0x114 4 bytes
+	e-0x118  1 byte
+	espaço-0x119   3 bytes
+	total-28 bytes
+	
+b)  É possível	
+	
+	c-0x100- 8 bytes
+	d-0x108- 4 bytes
+	*ptrB-0x10C	 4 bytes
+	b-0x110	 2 bytes
+	a-0x112 3 bytes
+	e-0x115 1 byte
+	espaço-0x116   2 bytes
+	total-24 bytes
+
+c)  structA matrix[4][5];
+
+	int return_structB_d(int i, int j){
+		return matrix[i][j].ptrB->d;
+	} 
+
+.section .data
+
+	.global return_structB_d				# declarar int return_structB_d(int i, int j) como global
+	
+.section .text
+	
+return_structB_d:
+		# prologue
+		pushl %ebp          				# save previous stack frame pointer
+		movl %esp, %ebp     				# the stack frame pointer for our function
+		
+		movl 8(%ebp), %eax 					# mover o i para eax
+		imull $5,%eax 						# número de elementos por linha
+		imull $28, %eax 					# tamanho da estrutura
+		movl 12(%ebp), %edx 				# mover o j para edx
+		imull $28, %edx 					# tamanho da estrutura
+		leal matrix(%eax,%edx), %eax 		# eax=&matrix[i][j]
+		movl 20(%eax), %edx					# edx= matrix[i][j].ptrB
+		movl 8(%edx), %eax					# eax=matrix[i][j].ptrB->d
+		
+		#epilogue
+        movl %ebp, %esp         		# restore the previous stack pointer ("clear" the stack)
+        popl %ebp               		# restore the previous stack frame pointer
+        ret

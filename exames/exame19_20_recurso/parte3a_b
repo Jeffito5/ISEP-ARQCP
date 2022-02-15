@@ -1,0 +1,32 @@
+Grupo III
+
+a)  a-0x100- 1 byte
+	espaço-	3 bytes
+	b-0x104- 12 bytes
+	c-0x116	 4 bytes
+	d-0x120	 28 bytes
+	total-48 bytes
+	
+b)  struct s2{								struct s2{
+		int e;									struct s3 h; 
+		short *f[2]; 							long long *g; 
+		long long *g;		   ----->			short *f[2]; 
+		struct s3 h;							int e;
+	};										};
+	 
+	h-0x200- 12 bytes
+	g-0x212- 4 bytes
+	f-0x220- 8 bytes
+	e-0x224- 4 byte
+	total- 28 bytes
+	
+	Independentemente da ordenação a estrutura irá ter sempre 28 bytes
+	porque tem que respeitar o alinhamento sendo este múltiplo do maior 
+	elemento que é K=4 bytes.
+  
+	 
+	 
+	
+	
+	
+	

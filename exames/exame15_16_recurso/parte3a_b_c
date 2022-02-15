@@ -1,0 +1,40 @@
+Grupo III
+
+a)  code-0x100- 2 bytes
+	espaço-0x102	2 bytes
+	start-0x104- 4 bytes
+	raw-0x108	 3 bytes
+	espaço-0x10B	1 byte
+	data-0x10C	 8 bytes
+	total-20 bytes
+	
+b)  Não é possível	
+
+	data-0x100-	 8 bytes
+	start-0x108- 4 bytes
+	code-0x10C-  2 bytes
+	raw-0x10E-	 3 bytes
+	espaço-0x111-	3 bytes
+	total-20 bytes
+	
+c)	void xpto(OldSensor *oldData){
+		NewSensor *newData;
+
+		/* zeros out all the space of oldData */
+		bzero((void *)oldData,sizeof(OldSensor));
+		 oldData->code = 0x104f;
+		 oldData->start = 0x80501ab8;
+		 oldData->raw[0] = 0xe1;
+		 oldData->raw[1] = 0xe2;
+		 oldData->raw[2] = 0x8f;
+		 oldData->data = 1.5;
+		 newData = (NewSensor *) oldData;
+		 ...
+	} 
+
+Respostas:
+newData->code = 0x104F
+newData->raw[0]= 0xB8
+newData->raw[2]= 0x50
+newData->raw[4]= 0xE1
+newData->sense = 0x008F

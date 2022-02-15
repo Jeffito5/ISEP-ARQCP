@@ -1,0 +1,18 @@
+Grupo V
+
+int loop_func(int a, int b){
+	int result = __(1)______;
+	while(__(2)___){
+		____(3)_______;
+		_____(4)______;
+	}
+	___(5)_______;
+	return result;
+}
+
+Respostas:
+1.1
+2.b>a
+3.result*=(a+b)
+4.a*=2
+5.result/=b

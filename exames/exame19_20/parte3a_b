@@ -1,0 +1,21 @@
+Grupo III
+
+a)  a-0x100- 4 bytes
+	b-0x104- 6 bytes
+	espaço	 2 bytes
+	c-0x112	 20 bytes
+	d-0x116	 1 byte
+	espaço   3 byes
+	total-36 bytes
+	
+b)
+	g-0x200- 8 bytes
+	h-0x208- 4 bytes
+	f-0x212- 4 bytes
+	e-0x216- 1 byte
+	espaço	 3 bytes
+	total- 20 bytes
+	
+	Independentemente da ordenação a estrutura irá ter sempre 20 bytes
+	porque tem que respeitar o alinhamento sendo este múltiplo do maior 
+	elemento que é K=4 bytes.

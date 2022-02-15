@@ -1,0 +1,33 @@
+Grupo III
+
+a)  a-0x100- 8 bytes
+	b-0x108- 4 bytes
+	x-0x10C	 4 bytes
+	c-0x110	 1 byte
+	espaço-0x111 3 bytes
+	y-0x114 4 bytes
+	e-0x118  3 bytes
+	espaço-0x11B 1 byte
+	z-0x11C   2 bytes
+	espaço-0x11E 2 bytes
+	total-32 bytes
+	
+b) É possível	
+
+	a-0x100- 8 bytes
+	b-0x108- 4 byte
+	x-0x10C- 4 bytes
+	y-0x110- 4 bytes
+	z-0x114- 2 bytes
+	e-0x116- 3 bytes
+	c-0x119- 1 byte
+	espaço-0x11A- 2 bytes
+	total-28 bytes
+
+c)	Resposta:				|	Resposta:
+	fun2					|	fun3
+							|
+-----------------------------------------------------------------------
+	Resposta:				|	Resposta:
+	fun4					|	fun1
+							|

@@ -1,0 +1,12 @@
+Grupo IV
+
+unsigned int data[3] = {0x11223344,0x55667788,0x99AABBCC};
+char *p=(char*)data;
+printf(“0x%x\n”,*p); -> 0x44
+o p aponta para um char que neste caso são os 2 bits menos significativos
+
+printf(“0x%x\n”,*(short*)(p+2)); -> 0x1122
+o p vai avançar 2 bytes e irá para o 22. Como sofreu um cast será 0x1122
+
+printf(“0x%x\n”,*(int*)&data[1]); -> 0x55667788
+neste há um cast para int e pede o apontado pelo p na segunda posição do data

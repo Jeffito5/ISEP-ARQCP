@@ -1,0 +1,12 @@
+Grupo II
+
+a) length é unsigned e 0-1 iria dar -1. Assim, fazendo UMAX+1-1 daria 
+UMAX. Uma
+vez que qualquer número inteiro é sempre menor ou igual a UMAX, a comparação 
+é sempre verdadeira. Logo, o código mostrado tenta aceder a posições inválidas
+do vetor a asism que a variável i assumer valores para além dos limites 
+do vetor.
+
+b) O código pode ser corrigido declarando length como int no cabeçalho da 
+função ou alterando a condição de paragem do ciclo para i <length pelas 
+razões descritas na resposta anterior.
